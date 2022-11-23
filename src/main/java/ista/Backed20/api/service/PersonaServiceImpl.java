@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -41,6 +42,25 @@ public class PersonaServiceImpl implements PersonaService {
         // TODO Auto-generated method stub
     	personaRepository.deleteById(id);
 
+    }
+
+    public boolean actualizarPersonas (Persona persona) {
+        Optional<Persona> exists = personaRepository.findById(persona.getId_persona());
+        if (exists.isPresent()) {
+            Persona PersonaActual = exists.get();
+            PersonaActual.setNombres(persona.getNombres());
+            PersonaActual.setApellidos(persona.getApellidos());
+            PersonaActual.setGenero(persona.getGenero());
+            PersonaActual.setCorreo(persona.getCorreo());
+            PersonaActual.setTelefono(persona.getTelefono());
+            PersonaActual.setFoto_perfil(persona.getFoto_perfil());
+            PersonaActual.setDireccion(persona.getDireccion());
+            PersonaActual.setFechaNacimiento(persona.getFechaNacimiento());
+            personaRepository.save(PersonaActual);
+            return true;
+        } else {
+            return false;
+        }
     }
 	
 

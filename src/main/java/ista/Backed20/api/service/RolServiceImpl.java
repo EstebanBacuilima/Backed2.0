@@ -1,7 +1,6 @@
 package ista.Backed20.api.service;
 
 import ista.Backed20.api.repository.RolRepository;
-import ista.Backed20.api.repository.UsuarioRolRepository;
 import ista.Backed20.api.entity.Rol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +14,7 @@ public class RolServiceImpl implements RolService {
 	
 	@Autowired
     private RolRepository rolRepository;
-	
-	@Autowired
-    private UsuarioRolRepository userRolRepository;
+
 
     @Override
     public List<Rol> findAll() {

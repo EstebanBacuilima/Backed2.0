@@ -21,6 +21,7 @@ public class Persona {
 	private String telefono;
 	private String direccion;
 	private Date fechaNacimiento;
+	private String foto_perfil;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "persona")
@@ -32,9 +33,7 @@ public class Persona {
 	}
 
 
-	public Persona(String cedula, String nombres, String apellidos, String genero, String correo, String telefono,
-                   String direccion, Date fechaNacimiento) {
-		super();
+	public Persona(String cedula, String nombres, String apellidos, String genero, String correo, String telefono, String direccion, Date fechaNacimiento, String foto_perfil) {
 		this.cedula = cedula;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
@@ -43,11 +42,16 @@ public class Persona {
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.fechaNacimiento = fechaNacimiento;
+		this.foto_perfil = foto_perfil;
 	}
 
+	public String getFoto_perfil() {
+		return foto_perfil;
+	}
 
-
-
+	public void setFoto_perfil(String foto_perfil) {
+		this.foto_perfil = foto_perfil;
+	}
 
 	public Long getId_persona() {
 		return id_persona;

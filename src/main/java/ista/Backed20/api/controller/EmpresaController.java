@@ -3,7 +3,6 @@ package ista.Backed20.api.controller;
 import ista.Backed20.api.entity.Empresa;
 import ista.Backed20.api.service.EmpresaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

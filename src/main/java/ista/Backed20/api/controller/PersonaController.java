@@ -40,4 +40,10 @@ public class PersonaController {
         return new ResponseEntity<>(personaService.findById(id), HttpStatus.OK);
     }
 
+    @PutMapping("/actualizarPersona")
+    public ResponseEntity<?> updateEdificio(@RequestBody Persona persona) {
+        personaService.actualizarPersonas(persona);
+        return new ResponseEntity<>((""), HttpStatus.CREATED);
+    }
+
 }
