@@ -1,6 +1,7 @@
 package ista.Backed20.api.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,9 @@ public class Rol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_rol;
-	
+
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private String nombre_rol;
 	private String descripcion;
 	private Boolean estado;
@@ -19,14 +22,10 @@ public class Rol {
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "rol")
 	private Set<Permisos> rolespermisos = new HashSet<>();
 
-
-
 	public Rol() {
-		super();
 	}
 
 	public Rol(String nombre_rol, String descripcion, Boolean estado) {
-		super();
 		this.nombre_rol = nombre_rol;
 		this.descripcion = descripcion;
 		this.estado = estado;

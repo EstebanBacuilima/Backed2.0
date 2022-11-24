@@ -1,6 +1,7 @@
 package ista.Backed20.api.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,18 +12,33 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_usuario;
-	
+
 	private String cedula;
 	private String nombres;
+	@NotNull
+	@Column(unique = true)
 	private String username;
 	private String contrasenia;
 	private Boolean estado;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Persona persona;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Empresa empresa;
+
+	/*@ManyToOne(fetch = FetchType.EAGER)
+	private Rol rol;*/
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Set<Rol> rol = new HashSet<>();
+
+
+
 	public Usuario() {
 	}
 
-
-	public Usuario(String cedula, String nombres, String username, String contrasenia, Boolean estado, Persona persona, Empresa empresa, Rol rol) {
+	public Usuario(String cedula, String nombres, String username, String contrasenia, Boolean estado, Persona persona, Empresa empresa, Set<Rol> rol) {
 		this.cedula = cedula;
 		this.nombres = nombres;
 		this.username = username;
@@ -32,16 +48,6 @@ public class Usuario {
 		this.empresa = empresa;
 		this.rol = rol;
 	}
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Persona persona;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Empresa empresa;
-
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Rol rol;
 
 	public Long getId_usuario() {
 		return id_usuario;
@@ -107,11 +113,11 @@ public class Usuario {
 		this.empresa = empresa;
 	}
 
-	public Rol getRol() {
+	public Set<Rol> getRol() {
 		return rol;
 	}
 
-	public void setRol(Rol rol) {
+	public void setRol(Set<Rol> rol) {
 		this.rol = rol;
 	}
 }

@@ -17,8 +17,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @Autowired
-	private RolServiceImpl rolService;
 
     @PostMapping("/guardarUsuario")
     public ResponseEntity <Usuario> guardarUsuario(@RequestBody Usuario usuario) {
