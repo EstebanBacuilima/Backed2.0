@@ -4,8 +4,7 @@ import ista.Backed20.api.dto.JwtDto;
 import ista.Backed20.api.dto.LoginUsuario;
 import ista.Backed20.api.dto.Mensaje;
 import ista.Backed20.api.jwt.JwtProvider;
-import ista.Backed20.api.service.RolService;
-import ista.Backed20.api.service.UsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +23,6 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
     @Autowired
     AuthenticationManager authenticationManager;

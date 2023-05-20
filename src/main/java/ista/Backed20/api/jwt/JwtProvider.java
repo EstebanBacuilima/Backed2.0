@@ -1,8 +1,8 @@
 package ista.Backed20.api.jwt;
 
 
-import io.jsonwebtoken.*;
 import ista.Backed20.api.entity.UsuarioPrincipal;
+import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,16 +43,16 @@ public class JwtProvider {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
 
-        } catch (SignatureException e) {
-            logger.error("Invalid JWT signature: {}", e.getMessage());
-        } catch (MalformedJwtException e) {
-            logger.error("Invalid JWT token: {}", e.getMessage());
-        } catch (ExpiredJwtException e) {
-            logger.error("JWT token is expired: {}", e.getMessage());
-        } catch (UnsupportedJwtException e) {
-            logger.error("JWT token is unsupported: {}", e.getMessage());
-        } catch (IllegalArgumentException e) {
-            logger.error("JWT claims string is empty: {}", e.getMessage());
+        }catch (MalformedJwtException e){
+            logger.error("token mal formado");
+        }catch (UnsupportedJwtException e){
+            logger.error("token no soportado");
+        }catch (ExpiredJwtException e){
+            logger.error("token expirado");
+        }catch (IllegalArgumentException e){
+            logger.error("token vacío");
+        }catch (SignatureException e){
+            logger.error("fail en la firma");
         }
 
         return false;

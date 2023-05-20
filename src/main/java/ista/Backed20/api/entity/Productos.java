@@ -8,7 +8,7 @@ public class Productos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_producto;
-    private long precio;
+    private Number precio;
     private String nombre;
     private String descripcion;
     private String tipo_Producto;
@@ -22,5 +22,7 @@ public class Productos {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Empresa empresa;
+    
+    
 
 }
